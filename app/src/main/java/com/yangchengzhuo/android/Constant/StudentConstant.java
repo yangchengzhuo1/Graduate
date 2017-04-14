@@ -4,7 +4,7 @@ package com.yangchengzhuo.android.Constant;
  * 学生类常量
  * Created by oliver_yang .
  */
-public class StudntConstant {
+public class StudentConstant {
     /**
      * 学生表表名
      */

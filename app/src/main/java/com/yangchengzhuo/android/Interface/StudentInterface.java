@@ -1,5 +1,10 @@
 package com.yangchengzhuo.android.Interface;
 
+import com.yangchengzhuo.android.Construction.Project;
+import com.yangchengzhuo.android.Construction.Teacher;
+
+import java.util.ArrayList;
+
 /**
  * 学生类接口
  * Created by oliver_yang .
@@ -59,8 +64,8 @@ public interface StudentInterface {
         /**
          * 查询老师有的题目
          *
-         * @param tno
-         *            老师编号
+         * @param tname
+         *            教师姓名
          * @return
          */
         Project select_ProjectByTeacher(String tname);

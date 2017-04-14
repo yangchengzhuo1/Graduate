@@ -1,4 +1,4 @@
-package com.yangchengzhuo.android.Interface;
+package com.yangchengzhuo.android.ServiceInterface;
 
 import com.yangchengzhuo.android.Construction.Project;
 import com.yangchengzhuo.android.Construction.Selection;
@@ -6,22 +6,20 @@ import com.yangchengzhuo.android.Construction.Student;
 
 import java.util.ArrayList;
 
-
 /**
- * 教师类接口
- * Created by oliver_yang .
+ * Created by oliver_yang on 2017/4/11.
  */
-public interface TeacherInterface {
+public interface TeacherServiceInterface {
     /**
      * 教师登陆
      *
-     * @param tno
-     *            教师编号
-     * @param tpassword
+     * @param sno
+     *            教师
+     * @param spassword
      *            密码
      * @return
      */
-    boolean login(String tno, String tpassword);
+    boolean login(String sno, String spassword) throws Exception;
 
     /**
      * 增加教师
@@ -40,7 +38,7 @@ public interface TeacherInterface {
      *            选题学生数
      */
     boolean addTeacher(String tno, String tname, String tpassword, String tsex,
-                       String tdept, String tnum);
+                       String tdept, String tnum) throws Exception;
 
     /**
      * 修改密码
@@ -49,12 +47,12 @@ public interface TeacherInterface {
      * @param tpassword
      * @return
      */
-    boolean updateSpassword(String tno, String tpassword);
+    boolean updateSpassword(String tno, String tpassword) throws Exception;
 
     /**
      * 查询学生
      */
-    ArrayList<Student> select_Student(String pno);
+    ArrayList<Student> select_Student(String pno) throws Exception;
 
     /**
      * 查询题目
@@ -67,18 +65,17 @@ public interface TeacherInterface {
      * 查询老师有的题目
      *
      * @param tname
-     *           教师姓名
+     *            教师姓名
      */
-    void select_ProjectByTeacher(String tname);
+    void select_ProjectByTeacher(String tname) throws Exception;
 
     /**
-     * 根据自己的教师号查看自己的题目
+     * 根据自己的编号查看自己的题目
      *
      * @param tno
-     *          教师工号
      * @return
      */
-    String select_ProjectBySelf(String tno);
+    String select_ProjectBySelf(String tno) throws Exception;
 
     /**
      * 增加题目
@@ -87,8 +84,10 @@ public interface TeacherInterface {
      *            题目名称
      * @param text
      *            题目内容
+     * @return
      */
-    boolean add_Project(String project, String tname, String text);
+    boolean add_Project(String project, String tname, String text)
+            throws Exception;
 
     /**
      * 查看选自己题的学生个数
@@ -96,7 +95,7 @@ public interface TeacherInterface {
      * @param tno
      * @return
      */
-    int selectSnum(String tno);
+    int selectSnum(String tno) throws Exception;
 
     /**
      * 根据教师编号找到教师姓名
@@ -104,13 +103,13 @@ public interface TeacherInterface {
      * @param tno
      * @return
      */
-    String select_teacherName(String tno);
+    String select_teacherName(String tno) throws Exception;
 
     /**
      * 教师增加评论
      *
      * @param text
-     *            教师评语
+     *            评语
      * @param sno
      *            学生编号
      * @return

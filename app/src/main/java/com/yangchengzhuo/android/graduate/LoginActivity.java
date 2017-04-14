@@ -9,14 +9,21 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.yangchengzhuo.android.Interface.StudentInterface;
+import com.yangchengzhuo.android.Interface.TeacherInterface;
+
 public class LoginActivity extends AppCompatActivity {
     private EditText editText_username;// 用户名输入区
     private EditText editText_password;// 密码输入区
     private Button button_login;// 登录按钮
     private Button button_reset;// 重置按钮
     private Spinner spinner;// 用户选择
+    private StudentInterface mStudentInterface;
+    private TeacherInterface mTeacherInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mStudentInterface =Graduate.getStudentInterface(this);
+        mTeacherInterface=Graduate.getTeacherInterface(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         editText_username = (EditText) this
@@ -31,11 +38,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (spinner.getSelectedItem().equals("学生")) {
-                    if (studentDao.login(editText_username.getText().toString()
+                    if (mStudentInterface.login(editText_username.getText().toString()
                             .trim(), editText_password.getText().toString()
                             .trim())) {
                         Intent intent = new Intent();
-                        intent.setClass(LoginActivity.this, StudentView.class);
+                        intent.setClass(LoginActivity.this, StudentViewActivity.class);
                         intent.putExtra("no", editText_username.getText()
                                 .toString().trim());
                         startActivity(intent);
@@ -46,11 +53,11 @@ public class LoginActivity extends AppCompatActivity {
                         editText_password.requestFocus();
                     }
                 } else if (spinner.getSelectedItem().equals("老师")) {
-                    if (teacherDao.login(editText_username.getText().toString()
+                    if (mTeacherInterface.login(editText_username.getText().toString()
                             .trim(), editText_password.getText().toString()
                             .trim())) {
                         Intent intent = new Intent();
-                        intent.setClass(LoginActivity.this, TeacherView.class);
+                        intent.setClass(LoginActivity.this, TeacherViewActivity.class);
                         intent.putExtra("no", editText_username.getText()
                                 .toString().trim());
                         startActivity(intent);

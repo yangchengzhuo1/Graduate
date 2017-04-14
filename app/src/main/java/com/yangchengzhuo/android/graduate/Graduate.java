@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.yangchengzhuo.android.Interface.StudentInterface;
 import com.yangchengzhuo.android.Interface.TeacherInterface;
+import com.yangchengzhuo.android.Operate.StudentOperate;
+import com.yangchengzhuo.android.Operate.TeacherOperate;
 
 /**
  * Created by oliver_yang .
@@ -16,8 +18,8 @@ public class Graduate {
      *            　上下文对象
      * @return　StudentInteface对象
      */
-    public static StudentInterface getStudentDao(Context context) {
-        return new StudentDaoBean(context);
+    public static StudentInterface getStudentInterface(Context context) {
+        return new StudentOperate(context);
     }
 
     /**
@@ -27,8 +29,8 @@ public class Graduate {
      *            上下文对象
      * @return TeacherInterface对象
      */
-    public static TeacherInterface getTeacherDao(Context context) {
-        return new TeacherDaoBean(context);
+    public static TeacherInterface getTeacherInterface(Context context) {
+        return new TeacherOperate(context);
     }
 
 
